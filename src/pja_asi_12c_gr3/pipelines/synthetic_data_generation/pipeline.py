@@ -1,5 +1,3 @@
-# src/pipelines/synthetic_data_generation/pipeline.py
-
 from kedro.pipeline import Pipeline, node
 from .nodes import generate_synthetic_data
 
