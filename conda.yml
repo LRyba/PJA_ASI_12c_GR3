@@ -19,4 +19,5 @@ dependencies:
   - flask
   - requests
   - joblib
+  - sdv
 prefix: /opt/anaconda3/envs/pja_asi_12c

@@ -1,14 +1,12 @@
 from kedro.pipeline import Pipeline, node
-
 from .nodes import split_data, remove_columns, transform_text_values, fill_missing_vals, clean_outliers, normalize
-
 
 def create_pipeline(**kwargs):
     return Pipeline([
         node(
             func=remove_columns,
             name="remove_columns_node",
-            inputs=["obesity_data", "params:cleaning.cols_to_remove"],
+            inputs=["synthetic_data if params:use_synthetic_data else obesity_data", "params:cleaning.cols_to_remove"],
             outputs="dataset_columns_removed"
         ),
         node(
