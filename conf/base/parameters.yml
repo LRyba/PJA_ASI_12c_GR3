@@ -38,3 +38,7 @@ model_selection:
 deployment:
   model_filepath: "data/models/champion_model.pkl"
   metrics_filepath: "data/models/champion_metrics.pkl"
+
+use_synthetic_data: false
+
+syn_num_rows: 1000  # Number of synthetic rows to generate
