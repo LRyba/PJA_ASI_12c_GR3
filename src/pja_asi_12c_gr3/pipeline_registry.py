@@ -55,20 +55,12 @@ def register_pipelines() -> dict[str, Pipeline]:
     pipelines["model_deployment"] = model_deployment_pipeline()
 
     # Define the default pipeline
-    if parameters.get("use_synthetic_data", False):
-        pipelines["__default__"] = (
-            pipelines["synthetic_data_generation"]
-            + pipelines["data_preparation"]
-            + pipelines["model_training"]
-            + pipelines["champion_challenger"]
-            + pipelines["model_deployment"]
-        )
-    else:
-        pipelines["__default__"] = (
-            pipelines["data_preparation"]
-            + pipelines["model_training"]
-            + pipelines["champion_challenger"]
-            + pipelines["model_deployment"]
-        )
+    pipelines["__default__"] = (
+        pipelines["synthetic_data_generation"]
+        + pipelines["data_preparation"]
+        + pipelines["model_training"]
+        + pipelines["champion_challenger"]
+        + pipelines["model_deployment"]
+    )
 
     return pipelines

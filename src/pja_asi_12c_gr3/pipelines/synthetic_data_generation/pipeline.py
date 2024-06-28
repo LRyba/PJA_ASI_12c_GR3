@@ -1,7 +1,7 @@
 from kedro.pipeline import Pipeline, node
 from .nodes import generate_synthetic_data
 
-def create_pipeline(**kwargs) -> Pipeline:
+def create_pipeline(**kwargs):
     return Pipeline(
         [
             node(

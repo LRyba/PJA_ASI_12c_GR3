@@ -2,6 +2,10 @@ from sklearn.model_selection import train_test_split
 
 from pja_asi_12c_gr3.utils.wandb_metrics import WandbMetrics
 
+def select_data(obesity_data, synthetic_data, use_synthetic_data):
+    if use_synthetic_data:
+        return synthetic_data
+    return obesity_data
 
 def remove_columns(data, cols_to_remove):
     data = data.copy()
