@@ -14,6 +14,7 @@ from .pipelines.champion_challenger import create_pipeline as champion_challenge
 from .pipelines.data_preparation import create_pipeline as data_preparation_pipeline
 from .pipelines.model_deployment import create_pipeline as model_deployment_pipeline
 from .pipelines.model_training import create_pipeline as manual_training_pipeline
+from .pipelines.synthetic_data_generation import create_pipeline as synthetic_data_generation_pipeline
 
 def register_pipelines() -> dict[str, Pipeline]:
     """Register the project's pipelines.
@@ -36,6 +37,9 @@ def register_pipelines() -> dict[str, Pipeline]:
     # Create and add the data preparation pipeline
     pipelines["data_preparation"] = data_preparation_pipeline()
 
+    # Create and add the synthetic data generation pipeline
+    pipelines["synthetic_data_generation"] = synthetic_data_generation_pipeline()
+
     # Choose the appropriate training pipeline
     if model_selection['method'] == "autogluon":
         logging.info("Using AutoML model training pipeline.")
@@ -52,7 +56,8 @@ def register_pipelines() -> dict[str, Pipeline]:
 
     # Define the default pipeline
     pipelines["__default__"] = (
-        pipelines["data_preparation"]
+        pipelines["synthetic_data_generation"]
+        + pipelines["data_preparation"]
         + pipelines["model_training"]
         + pipelines["champion_challenger"]
         + pipelines["model_deployment"]
