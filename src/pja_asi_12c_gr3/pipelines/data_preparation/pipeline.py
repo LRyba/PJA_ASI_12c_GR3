@@ -12,7 +12,7 @@ def create_pipeline(**kwargs):
         node(
             func=remove_columns,
             name="remove_columns_node",
-            inputs=["obesity_data", "params:cleaning.cols_to_remove"],
+            inputs=["selected_data", "params:cleaning.cols_to_remove"],
             outputs="dataset_columns_removed"
         ),
         node(
