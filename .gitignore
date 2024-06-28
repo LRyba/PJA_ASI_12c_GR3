@@ -40,6 +40,7 @@ out/
 .LSOverride
 .Trashes
 .bash_history
+.local
 
 # Vim
 *~
